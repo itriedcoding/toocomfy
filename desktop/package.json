@@ -1,0 +1,58 @@
+{
+  "name": "toocomfy",
+  "version": "0.1.0",
+  "description": "Desktop app for local image and video diffusion - runs open-source models on any machine, 6GB VRAM or CPU.",
+  "main": "main.js",
+  "author": "itriedcoding",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.toocomfy.app",
+    "productName": "toocomfy",
+    "files": [
+      "main.js",
+      "preload.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend",
+        "to": "backend"
+      },
+      {
+        "from": "../frontend",
+        "to": "frontend"
+      },
+      {
+        "from": "../main.py",
+        "to": "main.py"
+      },
+      {
+        "from": "../requirements.txt",
+        "to": "requirements.txt"
+      },
+      {
+        "from": "../desktop/server_bootstrap.py",
+        "to": "server_bootstrap.py"
+      }
+    ],
+    "win": {
+      "target": "portable",
+      "artifactName": "toocomfy-${version}-win-x64.exe"
+    },
+    "mac": {
+      "target": "dmg",
+      "artifactName": "toocomfy-${version}-mac"
+    },
+    "linux": {
+      "target": "AppImage",
+      "artifactName": "toocomfy-${version}-linux"
+    }
+  }
+}

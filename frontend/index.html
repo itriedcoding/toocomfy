@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self';" />
+    <title>toocomfy</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <h1>toocomfy</h1>
+      </div>
+      <div id="device-badge" class="badge">checking device</div>
+    </header>
+
+    <main>
+      <nav class="tabs">
+        <button id="tab-image" class="tab active" type="button">Image</button>
+        <button id="tab-video" class="tab" type="button">Video</button>
+      </nav>
+
+      <section id="panel-image" class="panel">
+        <div class="panel-inner">
+          <div class="field">
+            <label for="model-image">Model</label>
+            <select id="model-image"></select>
+          </div>
+          <div class="field">
+            <label for="prompt-image">Prompt</label>
+            <textarea id="prompt-image" rows="3" placeholder="a cat astronaut"></textarea>
+          </div>
+          <div class="field">
+            <label for="negative-image">Negative prompt</label>
+            <input id="negative-image" type="text" placeholder="blurry, bad anatomy" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="width-image">Width</label>
+              <input id="width-image" type="number" min="64" step="8" placeholder="default" />
+            </div>
+            <div class="field">
+              <label for="height-image">Height</label>
+              <input id="height-image" type="number" min="64" step="8" placeholder="default" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field slider-field">
+              <label for="steps-image">Steps <span id="steps-value-image" class="value">25</span></label>
+              <input id="steps-image" type="range" min="1" max="50" step="1" value="25" />
+            </div>
+            <div class="field slider-field">
+              <label for="guidance-image">Guidance <span id="guidance-value-image" class="value">7.5</span></label>
+              <input id="guidance-image" type="range" min="1" max="20" step="0.5" value="7.5" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="seed-image">Seed</label>
+              <input id="seed-image" type="number" min="0" step="1" value="0" />
+            </div>
+          </div>
+          <button id="generate-image" class="primary" type="button">Generate</button>
+          <div id="status-image" class="status" aria-live="polite">ready</div>
+          <div id="result-image" class="result">
+            <img id="result-image-el" alt="result" hidden />
+          </div>
+        </div>
+      </section>
+
+      <section id="panel-video" class="panel" hidden>
+        <div class="panel-inner">
+          <div class="field">
+            <label for="model-video">Model</label>
+            <select id="model-video"></select>
+          </div>
+          <div class="field">
+            <label for="prompt-video">Prompt</label>
+            <textarea id="prompt-video" rows="3" placeholder="a dog running through snow"></textarea>
+          </div>
+          <div class="field">
+            <label for="negative-video">Negative prompt</label>
+            <input id="negative-video" type="text" placeholder="blurry, bad anatomy" />
+          </div>
+          <div class="field">
+            <label for="init-video">Init image (optional, image-to-video)</label>
+            <input id="init-video" type="file" accept="image/*" />
+          </div>
+          <div class="row">
+            <div class="field slider-field">
+              <label for="frames-video">Frames <span id="frames-value-video" class="value">16</span></label>
+              <input id="frames-video" type="range" min="1" max="32" step="1" value="16" />
+            </div>
+            <div class="field slider-field">
+              <label for="fps-video">FPS <span id="fps-value-video" class="value">7</span></label>
+              <input id="fps-video" type="range" min="1" max="60" step="1" value="7" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field slider-field">
+              <label for="steps-video">Steps <span id="steps-value-video" class="value">25</span></label>
+              <input id="steps-video" type="range" min="1" max="50" step="1" value="25" />
+            </div>
+            <div class="field slider-field">
+              <label for="guidance-video">Guidance <span id="guidance-value-video" class="value">7.5</span></label>
+              <input id="guidance-video" type="range" min="1" max="20" step="0.5" value="7.5" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="seed-video">Seed</label>
+              <input id="seed-video" type="number" min="0" step="1" value="0" />
+            </div>
+          </div>
+          <button id="generate-video" class="primary" type="button">Generate</button>
+          <div id="status-video" class="status" aria-live="polite">ready</div>
+          <div id="result-video" class="result">
+            <video id="result-video-el" controls muted hidden></video>
+          </div>
+        </div>
+      </section>
+
+      <section id="outputs-section">
+        <h2>Outputs</h2>
+        <div id="gallery" class="gallery"></div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+models/
+outputs/
+.env
+*.log
+.DS_Store
+dist/
+build/
+*.spec.bak
+venv/
+node_modules/
+package-lock.json
